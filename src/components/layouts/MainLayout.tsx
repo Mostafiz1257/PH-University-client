@@ -8,10 +8,11 @@ import {
 } from "@ant-design/icons";
 import { Children, createElement } from "react";
 import { Outlet } from "react-router-dom";
+import { adminSidebarItems } from "../../routes/admin.routes";
 
 const items: MenuProps["items"] = [
   {
-    key: "1Dashboard",
+    key: "Dashboard",
     label: "Dashboard",
   },
   {
@@ -54,7 +55,7 @@ const MainLayout = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={items}
+          items={adminSidebarItems}
         />
       </Sider>
       <Layout>
