@@ -1,4 +1,4 @@
-import { Layout, MenuProps } from "antd";
+import { Button, Layout, MenuProps } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 import { Menu } from "antd";
 
@@ -6,29 +6,23 @@ import { Outlet } from "react-router-dom";
 import { adminPaths } from "../../routes/admin.routes";
 import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import Sidebar from "./Sidebar";
+import { useAppDispatch } from "../../redux/hooks";
+import { logout } from "../../redux/features/auth/authSlice";
 
-// const items: MenuProps["items"] = [
-//   {
-//     key: "Dashboard",
-//     label: "Dashboard",
-//   },
-//   {
-//     key: "User Management",
-//     label: "User Management",
-//     children: [
-//       { key: 21, label: "Create Admin" },
-//       { key: 22, label: "Create Faculty" },
-//       { key: 23, label: "Create Student" },
-//     ],
-//   },
-// ];
 
 const MainLayout = () => {
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+  
   return (
     <Layout style={{ height: "100vh" }}>
-     <Sidebar></Sidebar>
+      <Sidebar></Sidebar>
       <Layout>
-        <Header style={{ padding: 0 }} />
+        <Header>
+          <Button onClick={handleLogout}>Logout</Button>{" "}
+        </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
